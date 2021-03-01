@@ -1,38 +1,322 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#main {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  min-height: 100%;
+}
+/* * {
+  margin: 0;
+  padding: 0;
+} */
+/*Provisoire*/
+h1 {
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+/*Provisoire*/
+p {
+  font-family: "Roboto", sans-serif;
+  color: #fff;
+  text-align: justify;
+  text-justify: inter-word;
+}
+/*Elements réutilisés*/
+.big-card {
+  width: 90%;
+  background: rgba(73, 77, 82, 0.6);
+  border-radius: 5px;
+  padding: 1rem;
+  margin: 1rem;
+  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.card {
+  background: rgba(73, 77, 82, 0.6);
+  border-radius: 5px;
+  padding: 1rem;
+  margin: 1rem;
+  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
+}
+@media only screen and (min-width: 992px) {
+  .card {
+    width: 300px;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+.card img {
+  display: block;
+  margin: auto;
+}
+
+.title,
+Label {
+  font-family: "Roboto", sans-serif;
+  background: linear-gradient(#f7f193, #9c6717);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+}
+.title-Green {
+  margin: auto;
+  font-family: "Roboto", sans-serif;
+  background: linear-gradient(#5de5cc, #35645c);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+}
+
+button,
+.submit {
+  background: radial-gradient(#5de5cc, #35645c);
+  border: none;
+  border-radius: 10px;
+  padding: 10px 15px;
+  color: #494d52;
+}
+/* HEADER */
+#header {
+  width: 90%;
+  margin: 1rem auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo-desktop {
+  display: none;
+}
+
+#header a:link {
+  text-decoration: none;
+}
+#header a:link:focus > h4,
+#header a:link:hover > h4 {
+  border-bottom: 2px solid #5de5cc;
+}
+#header #Logo_desktop:link:focus,
+#header #Logo_desktop:link:hover {
+  border-bottom: none;
+}
+#header a:visited {
+  color: #5de5cc;
+}
+
+@media only screen and (max-width: 992px) {
+  .dropdown {
+    display: inline-block;
   }
+  .dropdown-child {
+    display: none;
+  }
+  .dropdown:focus .dropdown-child,
+  .dropdown:hover .dropdown-child {
+    display: block;
+  }
+  .grey {
+    background-color: rgba(73, 77, 82);
+  }
+}
+@media only screen and (min-width: 992px) {
+  #header {
+    width: 80%;
+  }
+  .boutonmenu {
+    display: none;
+  }
+  .logo-mobile {
+    display: none;
+  }
+  .logo-desktop {
+    display: block;
+    margin: auto;
+  }
+  .dropdown {
+    width: 100%;
+  }
+  .dropdown-child {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .grey {
+    display: flex;
+  }
+}
+
+/* carrousel */
+@keyframes display {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.carrousel {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.carrousel > img {
+  position: absolute;
+  top: 0;
+  opacity: 0;
+  width: 100%;
+  animation: display 40s infinite;
+}
+
+img:nth-child(2) {
+  animation-delay: 10s;
+}
+img:nth-child(3) {
+  animation-delay: 20s;
+}
+img:nth-child(4) {
+  animation-delay: 30s;
+}
+
+@media only screen and (min-width: 992px) {
+  .carrousel > img {
+    width: 38%;
+  }
+}
+
+/* OFFRES */
+#pres {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-bottom: 10px;
+}
+
+.card img {
+  display: block;
+  margin: auto;
+}
+.card button {
+  float: right;
+}
+
+/*UNE OFFRE*/
+
+.One-offer-card {
+  display: flex;
+  flex-direction: column;
+}
+.One-offer-card .title-Green {
+  margin-left: 0;
+}
+
+.One-offer-card img {
+  width: 50%;
+  display: block;
+  margin: auto;
+}
+.selects {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1rem;
+}
+
+.selects label {
+  margin: auto;
+  font-family: "Roboto", sans-serif;
+  background: linear-gradient(#f7f193, #9c6717);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
+  margin: 0.5rem;
+}
+
+.offer-select {
+  width: 286px;
+  height: 45px;
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  color: #5de5cc;
+  background: url(./Img/CaretDown.png) no-repeat right #494d52;
+  background-position-x: 244px;
+}
+
+@media only screen and (min-width: 992px) {
+  .One-offer-card {
+    width: 70%;
+  }
+  .One-offer-card img {
+    width: 40%;
+  }
+  .One-offer-card p {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/*FORM*/
+.Contacts {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.Form {
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+  margin-bottom: 1rem;
+}
+
+.column-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.column-1-form {
+  justify-content: space-around;
+}
+.Form input[type="text"] {
+  width: 480px;
+  height: 50px;
+}
+
+.Form input[type="text"],
+.Form textarea {
+  border: none;
+  background: #494d52;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin: 0.5rem;
+}
+
+.Contacts .submit {
+  display: block;
+  margin: auto;
+  width: 170px;
+  height: 50px;
+}
+
+.contact-card p {
+  text-align: right;
+  margin-top: auto;
+  margin-bottom: auto;
 }
