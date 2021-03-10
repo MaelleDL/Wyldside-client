@@ -1,3 +1,4 @@
+import React, { useState} from "react";
 import "./App.css";
 import Header from "./components/header";
 import WhoWeAre from "./components/Pages/Who_We_Are";
@@ -8,9 +9,11 @@ import LogIn from "./components/Pages/LogIn";
 import Contacts from "./components/Pages/Contacts";
 import Carrousel from "./components/carrousel";
 import OneOffer from "./components/OneOffer";
+import ShoppingBag from "./components/Shoppingbag";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
+  const [cart, setCart] = useState([]);
   return (
     <Router>
       <div className="App">
@@ -25,6 +28,7 @@ function App() {
             <Route path="/Identification" component={LogIn} />
             <Route path="/Contacts" component={Contacts} />
             <Route path="/Nos_Offres/:id" component={OneOffer} />
+            <Route path="/Shoppingbag" component={ShoppingBag} />
           </Switch>
         </div>
       </div>

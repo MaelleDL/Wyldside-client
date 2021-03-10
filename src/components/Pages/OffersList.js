@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Card from "../card";
+import { Link } from "react-router-dom";
 import "../../App.css";
 
 function OffersList() {
@@ -10,7 +10,7 @@ function OffersList() {
   const [offers, setOffers] = useState([]);
 
   const fetchOffers = async () => {
-    const response = await fetch("https://127.0.0.1:8000/course");
+    const response = await fetch("http://localhost:3000/course");
     const offers = await response.json();
     console.log(offers);
     setOffers(offers);
@@ -18,7 +18,16 @@ function OffersList() {
   return (
     <div id="pres">
       {offers.map((offer) => (
-        <Card offer={offer} />
+        <div className="card" key={offer.id}>
+          <div>
+            <h2 className="title">{offer.name}</h2>
+          </div>
+          <img src={offer.image_path} alt="img" width="100%" />
+          <p>{offer.description}</p>
+          <Link to={`/Nos_Offres/${offer.id}`}>
+            <button type="button">AFFICHER</button>
+          </Link>
+        </div>
       ))}
     </div>
   );

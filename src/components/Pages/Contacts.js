@@ -1,8 +1,28 @@
+import emailjs from "emailjs-com";
 function Contacts() {
+  function sendEmail(e) {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_q2l9uye",
+        "template_umzysp9",
+        e.target,
+        "user_VrBNhmLh0jCoYSugpKaEg"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+  }
   return (
     <div className="Contacts">
       <div className="big-card">
-        <form action="POST">
+        <form onSubmit={sendEmail}>
           <h2 className="title-Green">CONTACTEZ-NOUS</h2>
           <div className="Form">
             <div className="column-form column-1-form">

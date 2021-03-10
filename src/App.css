@@ -1,6 +1,7 @@
 #main {
   display: flex;
   justify-content: center;
+  align-items: center;
   min-height: 100%;
 }
 /* * {
@@ -17,10 +18,11 @@ p {
   color: #fff;
   text-align: justify;
   text-justify: inter-word;
+  word-wrap: break-word;
 }
 /*Elements réutilisés*/
 .big-card {
-  width: 90%;
+  max-width: 90%;
   background: rgba(73, 77, 82, 0.6);
   border-radius: 5px;
   padding: 1rem;
@@ -73,76 +75,83 @@ button,
 .submit {
   background: radial-gradient(#5de5cc, #35645c);
   border: none;
+  max-height: 40px;
   border-radius: 10px;
   padding: 10px 15px;
   color: #494d52;
 }
 /* HEADER */
-#header {
-  width: 90%;
-  margin: 1rem auto;
+.navbar {
+  position: relative;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
 }
 
-.logo-desktop {
-  display: none;
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  text-align: center;
+  list-style: none;
+  width: 100%;
+  top: 80px;
+  left: -100%;
+  transition: 0.5s all;
 }
 
-#header a:link {
+.logo {
+  width: 50%;
+  padding-top: 1rem;
+}
+.nav-links.active {
+  left: 0;
+}
+
+.nav-item {
+  padding: 10px 0;
+}
+
+.nav-link {
   text-decoration: none;
-}
-#header a:link:focus > h4,
-#header a:link:hover > h4 {
-  border-bottom: 2px solid #5de5cc;
-}
-#header #Logo_desktop:link:focus,
-#header #Logo_desktop:link:hover {
-  border-bottom: none;
-}
-#header a:visited {
-  color: #5de5cc;
+  transition: 0.3s all;
 }
 
-@media only screen and (max-width: 992px) {
-  .dropdown {
-    display: inline-block;
-  }
-  .dropdown-child {
-    display: none;
-  }
-  .dropdown:focus .dropdown-child,
-  .dropdown:hover .dropdown-child {
-    display: block;
-  }
-  .grey {
-    background-color: rgba(73, 77, 82);
-  }
+.nav-icon {
+  display: flex;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #f7f193;
 }
+.Socials a {
+  padding: 0.5rem;
+}
+
 @media only screen and (min-width: 992px) {
-  #header {
-    width: 80%;
-  }
-  .boutonmenu {
+  .nav-icon {
     display: none;
   }
-  .logo-mobile {
-    display: none;
+  .nav-link:hover {
+    border-bottom: 2px solid #5de5cc;
   }
-  .logo-desktop {
-    display: block;
-    margin: auto;
+  .nav-link:focus > h4,
+  .nav-link:hover > h4 {
+    border-bottom: 2px solid #5de5cc;
   }
-  .dropdown {
-    width: 100%;
-  }
-  .dropdown-child {
-    width: 100%;
-    display: flex;
+  .nav-links {
+    position: relative;
+    flex-direction: row;
     justify-content: space-between;
+    top: 0px;
+    left: 0%;
   }
-  .grey {
+  .Socials {
     display: flex;
+    align-items: center;
+  }
+  .Socials a {
+    padding: 0.5rem;
   }
 }
 
@@ -217,6 +226,7 @@ img:nth-child(4) {
 .One-offer-card {
   display: flex;
   flex-direction: column;
+  margin: auto;
 }
 .One-offer-card .title-Green {
   margin-left: 0;
@@ -259,7 +269,7 @@ img:nth-child(4) {
 
 @media only screen and (min-width: 992px) {
   .One-offer-card {
-    width: 70%;
+    max-width: 70%;
   }
   .One-offer-card img {
     width: 40%;
@@ -295,13 +305,17 @@ img:nth-child(4) {
 .column-1-form {
   justify-content: space-around;
 }
-.Form input[type="text"] {
+.Form input[type="text"],
+.Form input[type="password"],
+.Form select {
   width: 480px;
   height: 50px;
 }
 
 .Form input[type="text"],
-.Form textarea {
+.Form input[type="password"],
+.Form textarea,
+.Form select {
   border: none;
   background: #494d52;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -319,4 +333,48 @@ img:nth-child(4) {
   text-align: right;
   margin-top: auto;
   margin-bottom: auto;
+}
+
+/* LOGIN */
+
+#LOGIN {
+  display: flex;
+  flex-direction: column;
+}
+
+.Connect {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* SHOPPINGBAG */
+.shop-offer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #494d52;
+  margin: 0.5rem;
+  padding: 1rem;
+}
+
+.shop-offer h3 {
+  background: linear-gradient(#f7f193, #9c6717);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.but {
+  display: flex;
+  flex-direction: column;
+}
+.but button {
+  margin: 0.2rem;
+  padding: 8px;
+}
+
+.shoppingbag button {
+  float: right;
 }
