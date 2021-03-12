@@ -13,9 +13,10 @@ function OneOffer({ match }) {
   const [forfaits, setForfaits] = useState([]);
   const [selectedSection, setSelectedSection]=useState([]);
   const [offer, setOffer]=useState([]);
-
+  const URL=process.env.REACT_APP_URL
   const fetchCourse = async () => {
-    axios.get(`http://localhost:3000/course/${match.params.id}`)
+    
+    axios.get(`${URL}/course/${match.params.id}`)
     .then(res => {
       const response = res.data.data;
       setCourse(response);
@@ -26,7 +27,7 @@ function OneOffer({ match }) {
   };
 
   const fetchOffer=async(id)=>{
-    axios.get(`http://localhost:3000/offer?CourseId=${id}`)
+    axios.get(`${URL}/offer?CourseId=${id}`)
     .then(res=>{const response=res.data
       console.log(response)}
       )

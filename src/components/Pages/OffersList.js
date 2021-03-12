@@ -9,11 +9,13 @@ function OffersList() {
   }, []);
 
   const [offers, setOffers] = useState([]);
+  const URL=process.env.REACT_APP_URL
 
   const fetchOffers = async () => {
-    axios.get(`http://localhost:3000/course`)
+    axios.get(`${URL}/course`)
       .then(res => {
         const response = res.data;
+        console.log(response)
         setOffers(response);
       })
   };
