@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from 'axios';
 import "../../App.css";
 
 function OffersList() {
@@ -10,10 +11,11 @@ function OffersList() {
   const [offers, setOffers] = useState([]);
 
   const fetchOffers = async () => {
-    const response = await fetch("http://localhost:3000/course");
-    const offers = await response.json();
-    console.log(offers);
-    setOffers(offers);
+    axios.get(`http://localhost:3000/course`)
+      .then(res => {
+        const response = res.data;
+        setOffers(response);
+      })
   };
   return (
     <div id="pres">

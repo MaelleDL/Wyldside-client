@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 
 
-
 function ShoppingBag() {
   useEffect(()=>{
     getLocalCart();
@@ -22,16 +21,11 @@ function ShoppingBag() {
       <h2 className="subtitle">ShoppingBag</h2>
       {cart.map((cartOffer) => (
       <div className="shop-offer" key={cartOffer.id}>
-        <img src={cartOffer.image_path} alt="phototest" width="10%" />
-        <p>2</p>
+        <img src={cartOffer.image_path} alt="image-shop" width="10%" />
         <h3>{cartOffer.name}</h3>
         <p>forfait</p>
         <p>section</p>
         <p>320€</p>
-        <div className="but">
-          <button>-</button>
-          <button>+</button>
-        </div>
       </div>))}
       <button>Payer</button>
     </div>

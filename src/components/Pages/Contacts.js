@@ -21,6 +21,7 @@ function Contacts() {
   }
   return (
     <div className="Contacts">
+      <div className="contact-big-div">
       <div className="big-card">
         <form onSubmit={sendEmail}>
           <h2 className="title-Green">CONTACTEZ-NOUS</h2>
@@ -48,6 +49,8 @@ function Contacts() {
           <input type="submit" value="ENVOYER" className="submit" />
         </form>
       </div>
+      </div>
+      <div className="little-cards">
       <div className="adresse contact-card card">
         <h2 className="title-Green">ADRESSE</h2>
         <p>WYLDSIDE</p>
@@ -62,7 +65,7 @@ function Contacts() {
       <div className="mail contact-card card">
         <h2 className="title-Green">MAIL</h2>
         <p>wyldside.44@gmail.com</p>
-      </div>
+      </div></div>
     </div>
   );
 }

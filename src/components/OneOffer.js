@@ -1,26 +1,39 @@
 import React, { useState, useEffect } from "react";
+import axios from 'axios';
 import "../App.css";
 
 function OneOffer({ match }) {
   useEffect(() => {
-    fetchOffer();
+    fetchCourse();
     // eslint-disable-next-line
   }, []);
 
-  const [offer, setOffer] = useState([]);
+  const [course, setCourse] = useState([]);
   const [sections, setSections] = useState([]);
   const [forfaits, setForfaits] = useState([]);
+  const [selectedSection, setSelectedSection]=useState([]);
+  const [offer, setOffer]=useState([]);
 
-  const fetchOffer = async () => {
-    const response = await fetch(
-      `http://localhost:3000/course/${match.params.id}`
-    );
-    const RawOffer = await response.json();
-    console.log(RawOffer.data);
-    setOffer(RawOffer.data);
-    setSections(RawOffer.data.Sections);
-    setForfaits(RawOffer.data.Forfaits);
+  const fetchCourse = async () => {
+    axios.get(`http://localhost:3000/course/${match.params.id}`)
+    .then(res => {
+      const response = res.data.data;
+      setCourse(response);
+      setSections(response.Sections);
+      setForfaits(response.Forfaits);
+      fetchOffer(response.id);
+    })
   };
+
+  const fetchOffer=async(id)=>{
+    axios.get(`http://localhost:3000/offer?CourseId=${id}`)
+    .then(res=>{const response=res.data
+      console.log(response)}
+      )
+  }
+
+
+  // CART
   const [cartstorage, setCartstorage]=useState([]);
   const addToCart = (offer) => {
     getLocalCart()
@@ -34,13 +47,12 @@ function OneOffer({ match }) {
     } else {
       let cartLocal = JSON.parse(localStorage.getItem("cart"));
       setCartstorage(cartLocal);
-      // console.log(cart);
     }
   };
   return (
       <div className="One-offer-card big-card">
-        <h2 className="title-Green">{offer.name}</h2>
-        <img src={offer.image_path} alt="img" width="100%" />
+        <h2 className="title-Green">{course.name}</h2>
+        <img src={course.image_path} alt="img" width="100%" />
         <div className="selects">
           <div id="sections">
             <label htmlFor="Sections">Section:</label>
@@ -63,7 +75,7 @@ function OneOffer({ match }) {
             </select>
           </div>
         </div>
-        <p>{offer.description}</p>
+        <p>{course.description}</p>
         <div>
           <button onClick={() => addToCart(offer)}>
             Souscrire à cette offre

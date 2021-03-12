@@ -3,6 +3,7 @@
 }
 .club {
   background: url(../../Img/ACRO.jpg) no-repeat;
+  background-size: 100%;
 }
 
 .club-title {
@@ -17,6 +18,7 @@
 }
 .team {
   background: url(../../Img/yoga.jpg) no-repeat;
+  background-size: 100%;
   padding: 1rem;
 }
 

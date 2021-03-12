@@ -95,8 +95,9 @@ button,
   position: absolute;
   text-align: center;
   list-style: none;
+  padding: 1rem;
   width: 100%;
-  top: 80px;
+  top: 100px;
   left: -100%;
   transition: 0.5s all;
 }
@@ -104,9 +105,12 @@ button,
 .logo {
   width: 50%;
   padding-top: 1rem;
+  position: relative;
+  z-index: 1;
 }
 .nav-links.active {
   left: 0;
+  background-color: rgba(38, 38, 39, 0.95);
 }
 
 .nav-item {
@@ -286,11 +290,19 @@ img:nth-child(4) {
   width: 100%;
   margin: auto;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.contact-big-div {
+  display: flex;
+  justify-content: center;
+}
+.little-cards {
+  display: flex;
   justify-content: space-around;
 }
 .Form {
-  width: 90%;
+  width: 100%;
   display: flex;
   justify-content: space-around;
   margin: auto;
@@ -377,4 +389,34 @@ img:nth-child(4) {
 
 .shoppingbag button {
   float: right;
+}
+
+/* PERSONAL-SPACE */
+.personal-space {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.indiv {
+  display: flex;
+  flex-direction: column;
+}
+.groups-i {
+  display: flex;
+  justify-content: space-around;
+}
+
+.right-section-pers .card img {
+  margin: 0;
+}
+
+@media only screen and (min-width: 992px) {
+  .personal-space {
+    flex-direction: row;
+  }
+  .right-section-pers .card {
+    width: 700px;
+  }
 }
