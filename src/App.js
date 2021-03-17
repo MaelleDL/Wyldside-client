@@ -1,19 +1,18 @@
 import React from "react";
 import "./App.css";
 import Header from "./components/header";
-import WhoWeAre from "./components/Pages/Who_We_Are";
-import OffersList from "./components/Pages/OffersList";
-import Planning from "./components/Pages/Planning";
-import Actualities from "./components/Pages/Actualities";
-// import LogIn from "./components/Pages/LogIn";
-import Contacts from "./components/Pages/Contacts";
-import Carrousel from "./components/carrousel";
-import OneOffer from "./components/OneOffer";
+import WhoWeAre from "./components/PRESENTATION";
+import OffersList from "./components/OFFERS/OffersList";
+import Connexion from "./components/ESPACE-PERSO/CONNEXION/Connexion";
+import Contacts from "./components/CONTACTS";
+import Carrousel from "./components/ACCUEIL/carrousel";
+import OneOffer from "./components/OFFERS/OneOffer";
 import ShoppingBag from "./components/Shoppingbag";
+import PersonalSpace from "./components/ESPACE-PERSO/ESPACE-PERSO";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-// PROVISOIRE
-import PersonalSpace from "./components/Pages/Espace-perso";
+
+
 
 function App() {
   return (
@@ -25,12 +24,11 @@ function App() {
             <Route path="/" exact component={Carrousel} />
             <Route path="/Qui_sommes_nous" component={WhoWeAre} />
             <Route path="/Nos_Offres" exact component={OffersList} />
-            <Route path="/Planning" component={Planning} />
-            <Route path="/Actualites" component={Actualities} />
-            <Route path="/Identification" component={PersonalSpace} />
-            <Route path="/Contacts" component={Contacts} />
             <Route path="/Nos_Offres/:id" component={OneOffer} />
+            <Route path="/Identification" component={Connexion} />
+            <Route path="/Contacts" component={Contacts} />
             <Route path="/Shoppingbag" component={ShoppingBag} />
+            <Route path="/Espace_perso" exact component={PersonalSpace} />
           </Switch>
         </div>
       </div>

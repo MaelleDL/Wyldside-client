@@ -1,8 +1,8 @@
 import React from "react";
-import IMG1 from "../Img/NB/ACRO-SQUARE-NB.png";
-import IMG2 from "../Img/NB/CHEER-SQUARE-NB.png";
-import IMG3 from "../Img/NB/DANSE-SQUARE-NB.png";
-import IMG4 from "../Img/NB/YOGA2-SQUARE-NB.png";
+import IMG1 from "../../Img/NB/PNG/ACRO-SQUARE-NB.png";
+import IMG2 from "../../Img/NB/PNG/CHEER-SQUARE-NB.png";
+import IMG3 from "../../Img/NB/PNG/DANSE-SQUARE-NB.png";
+import IMG4 from "../../Img/NB/PNG/YOGA2-SQUARE-NB.png";
 
 const Carrousel = () => {
   return (

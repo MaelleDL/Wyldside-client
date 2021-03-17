@@ -2,9 +2,9 @@ import React, {useState} from "react";
 import Logo from "../Img/logo.png";
 import { Link } from "react-router-dom";
 import {FiMenu, FiX} from 'react-icons/fi';
-import ShoppingBag from "../Img/ShoppingBag.png";
-import Instagram from "../Img/InstagramLogo.png";
-import Facebook from "../Img/FacebookLogo.png";
+import ShoppingBag from "../Img/icon/ShoppingBag.png";
+import Instagram from "../Img/icon/InstagramLogo.png";
+import Facebook from "../Img/icon/FacebookLogo.png";
 
 const Header = () => {
   const [open, setOpen]=useState(false);
@@ -47,26 +47,7 @@ const Header = () => {
           </li>
         </ul>
       </nav>
-      
-
-                
-          
-
-            
-          {/* <Link to="/Actualites">
-            <h4 className="menu-items title">NOS ACTUALITES</h4>
-          </Link> */}
-          {/* <Link to="/" id="Logo_desktop">
-            <img className="logo, logo-desktop" src={Logo} alt="Logo/accueil" />
-          </Link> */}
-          {/* <div className="grey">
-            <Link to="/Planning">
-              <h4 className="menu-items title">PLANNING REGULIER</h4>
-            </Link>
-          </div> */}
-          
-
-                 </div>  
+</div>  
 
           
   );

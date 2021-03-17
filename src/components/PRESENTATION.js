@@ -1,7 +1,7 @@
 import React from "react";
 import "./Who_We_Are.css";
-import Remi from "../../Img/Remi.png";
-import Laura from "../../Img/Laura.png";
+import Remi from "../Img/Team/Remi.png";
+import Laura from "../Img/Team/Laura.png";
 
 const WhoWeAre = () => {
   return (

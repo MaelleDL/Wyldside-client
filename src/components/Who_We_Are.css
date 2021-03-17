@@ -2,7 +2,7 @@
   width: 100%;
 }
 .club {
-  background: url(../../Img/ACRO.jpg) no-repeat;
+  background: url(../Img/Backgrounds/ACRO.jpg) no-repeat;
   background-size: cover;
 }
 
@@ -17,7 +17,7 @@
   font-size: 2rem;
 }
 .team {
-  background: url(../../Img/yoga.jpg) no-repeat;
+  background: url(../Img/Backgrounds/yoga.jpg) no-repeat;
   background-size: cover;
   padding: 1rem;
 }
