@@ -1,5 +1,5 @@
 import React from "react";
-import "./Who_We_Are.css";
+import "./Presentation.css";
 import Remi from "../Img/Team/Remi.png";
 import Laura from "../Img/Team/Laura.png";
 

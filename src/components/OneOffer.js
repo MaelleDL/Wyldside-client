@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 
-function OneOffer({ match }) {
+
+const OneOffer=({match})=> {
 
   const [course, setCourse] = useState([]);
   const [sections, setSections] = useState([]);
@@ -10,7 +11,8 @@ function OneOffer({ match }) {
   const [selectedForfait, setSelectedForfait]=useState('');
   const [offers, setOffers]=useState([]);
   const [offer, setOffer]=useState([]);
-  const URL=process.env.REACT_APP_URL
+  const [cartstorage, setCartstorage]=useState([]);
+  const URL=process.env.REACT_APP_URL;
 
   useEffect(() => {
     fetchCourse();
@@ -25,8 +27,7 @@ function OneOffer({ match }) {
 
  
 
-  const fetchCourse = async () => {
-    
+  const fetchCourse = () => {
     axios.get(`${URL}/course/${match.params.id}`)
     .then(res => {
       const response = res.data.data;
@@ -36,7 +37,7 @@ function OneOffer({ match }) {
     })
   };
 
-  const fetchOffers=async()=>{
+  const fetchOffers=()=>{
     axios.get(`${URL}/offer?CourseId=${match.params.id}`)
     .then(res=>{const response=res.data.data
     setOffers(response);
@@ -51,17 +52,12 @@ function OneOffer({ match }) {
 
   const filterOffer=(SForfait,SSection)=>{
     const filteredOffer=offers.filter((el)=>el.ForfaitId==SForfait && el.SectionId==SSection);
-    console.log(filteredOffer)
     setOffer(filteredOffer);
-
   };
 
   // CART
-  const [cartstorage, setCartstorage]=useState([]);
-  const addToCart = (offer) => {
-    console.log(offer)
-    getLocalCart()
-    setCartstorage([...cartstorage, offer]);
+  const addToCart =(offer) => {
+    setCartstorage([...cartstorage, offer])
     localStorage.setItem("cart", JSON.stringify(cartstorage));
   };
   const getLocalCart = () => {
@@ -75,8 +71,10 @@ function OneOffer({ match }) {
   return (
       <div className="One-offer-card big-card">
         <h2 className="title-Green">{course.name}</h2>
-        {/* <img src={require(`../Img/NB/JPG/YOGA2-SQUARE-NB.jpg`).default} alt="discipline" width="100%" /> */}
+        <img src={course.image_path} alt="discipline" width="100%" />
+
         <div className="top-info">
+          
         <div className="selects">
           <div id="sections">
             <label htmlFor="Sections">Section:</label>
@@ -110,9 +108,11 @@ function OneOffer({ match }) {
         
         <p>{course.description}</p>
         <div>
+        <div className="button-div">
           <button onClick={() => addToCart(offer[0])}>
             Souscrire à cette offre
           </button>
+        </div>
         </div>
       </div>
   );

@@ -1,18 +1,17 @@
+html,
+body,
+#root,
+.App {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
 #main {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100%;
 }
-/* * {
-  margin: 0;
-  padding: 0;
-} */
-/*Provisoire*/
-h1 {
-  color: white;
-}
-/*Provisoire*/
 p {
   font-family: "Roboto", sans-serif;
   color: #fff;
@@ -22,7 +21,6 @@ p {
 }
 /*Elements réutilisés*/
 .big-card {
-  max-width: 80%;
   background: rgba(73, 77, 82, 0.6);
   border-radius: 5px;
   padding: 1rem;
@@ -31,21 +29,21 @@ p {
 }
 
 .card {
+  max-width: 80%;
   background: rgba(73, 77, 82, 0.6);
   border-radius: 5px;
   padding: 1rem;
   margin: 1rem;
   box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
 }
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 758px) {
   .card {
-    width: 300px;
+    width: 400px;
   }
 }
 
 .card img {
   display: block;
-  margin: auto;
 }
 
 .title,
@@ -62,24 +60,35 @@ Label {
 .title-Green {
   margin: auto;
   font-family: "Roboto", sans-serif;
-  background: linear-gradient(#5de5cc, #35645c);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -moz-text-fill-color: transparent;
-  -webkit-text-fill-color: transparent;
+  color: #51c5b0;
   margin-bottom: 1rem;
 }
 
 button,
 .submit {
-  background: radial-gradient(#5de5cc, #35645c);
+  background: #51c5b0;
+  color: #303135;
   border: none;
   max-height: 40px;
   border-radius: 10px;
   padding: 10px 15px;
-  color: #494d52;
+  margin: 0.5rem;
+  box-shadow: 10px 10px 5px rgba(36, 36, 36, 0.5);
 }
+.button-div {
+  display: flex;
+  justify-content: flex-end;
+}
+
+button:hover,
+button:focus,
+button:active,
+.submit:hover,
+.submit:focus,
+.submit:active {
+  background: radial-gradient(#f7f193, #9c6717);
+}
+
 /* HEADER */
 .navbar {
   position: relative;
@@ -87,6 +96,7 @@ button,
   justify-content: space-between;
   align-items: center;
   padding: 0 2rem;
+  z-index: 3;
 }
 
 .nav-links {
@@ -128,6 +138,11 @@ button,
   cursor: pointer;
   color: #f7f193;
 }
+.li-signOut {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
 .Socials a {
   padding: 0.5rem;
 }
@@ -159,51 +174,50 @@ button,
   }
 }
 
-/* carrousel */
-@keyframes display {
-  0% {
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  20% {
-    opacity: 1;
-  }
-  30% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-.carrousel {
-  position: relative;
+/* ACCUEIL */
+.accueil {
   width: 100%;
   display: flex;
+  align-items: center;
   justify-content: center;
 }
-.carrousel > img {
+#back-accueil {
+  display: block;
+  margin: auto;
+  width: 90%;
+}
+.titre-accueil {
   position: absolute;
-  top: 0;
-  opacity: 0;
-  width: 100%;
-  animation: display 40s infinite;
+  margin: auto;
+  width: 95%;
+  display: grid;
+  grid-template-columns: repeat(4);
+  grid-auto-rows: minmax(80px, auto);
 }
 
-img:nth-child(2) {
-  animation-delay: 10s;
+#wyld {
+  margin-left: 0.5rem;
+  max-width: 60%;
+  grid-column: 1 / 4;
+  grid-row: 1;
 }
-img:nth-child(3) {
-  animation-delay: 20s;
-}
-img:nth-child(4) {
-  animation-delay: 30s;
+#side {
+  max-width: 100%;
+  grid-column: 3/4;
+  grid-row: 3;
 }
 
+@media only screen and (min-width: 768px) {
+  #back-accueil {
+    width: 70%;
+  }
+  .titre-accueil {
+    width: 70%;
+  }
+}
 @media only screen and (min-width: 992px) {
-  .carrousel > img {
-    width: 38%;
+  #back-accueil {
+    width: 30%;
   }
 }
 
@@ -217,20 +231,12 @@ img:nth-child(4) {
   margin-bottom: 10px;
 }
 
-.card img {
-  display: block;
-  margin: auto;
-}
-.card button {
-  float: right;
-}
-
 /*UNE OFFRE*/
 
 .One-offer-card {
   display: flex;
   flex-direction: column;
-  margin: auto;
+  width: 80%;
 }
 .One-offer-card .title-Green {
   margin-left: 0;
@@ -241,9 +247,9 @@ img:nth-child(4) {
   display: block;
   margin: auto;
 }
-
 .top-info {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
 }
 
@@ -269,7 +275,7 @@ img:nth-child(4) {
 
 .offer-select {
   margin: 0.6rem;
-  width: 286px;
+  width: 250px;
   height: 45px;
   border: none;
   -webkit-appearance: none;
@@ -277,7 +283,7 @@ img:nth-child(4) {
   appearance: none;
   color: #5de5cc;
   background: url(./Img/icon/CaretDown.png) no-repeat right #494d52;
-  background-position-x: 244px;
+  background-position-x: 215px;
 }
 
 .price {
@@ -286,13 +292,13 @@ img:nth-child(4) {
   align-items: center;
 }
 .price span {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   margin: 0;
 }
 
 @media only screen and (min-width: 992px) {
   .One-offer-card {
-    max-width: 70%;
+    max-width: 50%;
   }
   .One-offer-card img {
     width: 40%;
@@ -309,7 +315,14 @@ img:nth-child(4) {
   }
 }
 
-/*FORM*/
+/*FORMS*/
+.connexion {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 .Contacts {
   width: 100%;
   margin: auto;
@@ -321,28 +334,35 @@ img:nth-child(4) {
   display: flex;
   justify-content: center;
 }
+.big-card-form {
+  width: 80%;
+}
 .little-cards {
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
+  align-items: center;
 }
 .Form {
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  align-items: center;
   margin: auto;
-  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 
-.column-form {
+.column-form,
+.sign-in-group {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  width: 90%;
 }
 
 .Form input[type="text"],
 .Form input[type="password"],
 .Form select {
-  width: 480px;
   height: 50px;
 }
 
@@ -356,41 +376,49 @@ img:nth-child(4) {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   margin: 0.5rem;
 }
-
-.Contacts .submit {
-  display: block;
-  margin: auto;
-  width: 170px;
-  height: 50px;
+.contact-card {
+  width: 80%;
 }
-
 .contact-card p {
   text-align: right;
   margin-top: auto;
   margin-bottom: auto;
 }
 
-/* LOGIN */
-
-#LOGIN {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.Connect {
-  display: inline-flex;
-  align-items: center;
+@media only screen and (min-width: 992px) {
+  .Form {
+    flex-direction: row;
+  }
+  .Form input[type="text"],
+  .Form input[type="password"],
+  .Form textarea {
+    min-width: 380px;
+  }
+  .little-cards {
+    flex-direction: row;
+  }
+  .contact-card {
+    width: 400px;
+    height: 120px;
+  }
+  .sign-in-group {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 /* SHOPPINGBAG */
 .shop-offer {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   background: #494d52;
   margin: 0.5rem;
   padding: 1rem;
+}
+.shop-offer img {
+  width: 40%;
 }
 
 .shop-offer h3 {
@@ -402,17 +430,28 @@ img:nth-child(4) {
   -webkit-text-fill-color: transparent;
 }
 
-.but {
+.bottom-cart {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.but button {
-  margin: 0.2rem;
-  padding: 8px;
+.total {
+  color: #fff;
+  font-family: "Roboto";
 }
 
-.shoppingbag button {
-  float: right;
+@media only screen and (min-width: 768px) {
+  .shop-offer {
+    flex-direction: row;
+  }
+  .shop-offer img {
+    width: 10%;
+  }
+  .bottom-cart {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
 
 /* PERSONAL-SPACE */
@@ -445,9 +484,74 @@ img:nth-child(4) {
   }
 }
 
-
 /* ESPACE PERSO */
 
-.personal-space{
+.personal-space {
   height: 100%;
+}
+
+/* VISITOR */
+.visitor {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.visitor-left {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+}
+.visitor-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+@media only screen and (min-width: 768px) {
+  .visitor-left,
+  .visitor-right {
+    width: 50%;
+  }
+  .visitor {
+    flex-direction: row;
+  }
+  .card {
+    width: 400px;
+  }
+  .visitor .card img {
+    width: 50%;
+    margin: auto;
+  }
+}
+
+/* ADMIN */
+.admin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.admin .card {
+  text-decoration: none;
+  text-align: center;
+}
+.admin .card:hover,
+.admin .card:focus,
+.admin .card:active {
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.admin .card img {
+  display: block;
+  margin: auto;
+}
+
+.gestion-card {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

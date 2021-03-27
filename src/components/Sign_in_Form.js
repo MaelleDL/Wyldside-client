@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
-import axios from 'axios';
+import React from 'react';
 import { Redirect } from 'react-router';
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import AuthService from '../services/auth.service'
 
 
 const Signschema=yup.object().shape({
@@ -16,25 +16,22 @@ const Signschema=yup.object().shape({
     })
   
 
-    function SignIn() {
+    function SignIn({connected, setConnected}) {
     const {register, handleSubmit, errors}=useForm({
         resolver:yupResolver(Signschema)
       });
-      const [role, setRole]=useState("");
       
       
       const handleLog=(data)=>{
-        axios.post(`http://localhost:3000/auth/signin`, data)
-        .then(res => {
-          let userInfo=res.data.data
-          console.log(userInfo)
-          localStorage.setItem('user',JSON.stringify(userInfo))
-          setRole(userInfo.user.role)
+        AuthService.register(data)
+        .then(response=>{
+          console.log(response);
+          setConnected(true)
         })
       }
 
-    return(<div className="big-card">
-      {role? <Redirect to="/Espace_perso"/> :
+    return(<div className="big-card big-card-form">
+      {connected===true? <Redirect to="/Espace_perso"/>:
           <form onSubmit={handleSubmit(handleLog)}>
             <h2 className="title-Green">PREMIERE INSCRIPTION</h2>
             <div className="Form">
@@ -71,9 +68,11 @@ const Signschema=yup.object().shape({
               </div>
 
             </div>
-
+            <div className="button-div">
             <input type="submit" value="INSCRIPTION" className="submit" />
-          </form>}
+            </div>
+          </form>
+        }
         </div>
         );
     

@@ -1,4 +1,5 @@
 import emailjs from "emailjs-com";
+
 function Contacts() {
   function sendEmail(e) {
     e.preventDefault();
@@ -13,6 +14,7 @@ function Contacts() {
       .then(
         (result) => {
           console.log(result.text);
+          alert('Merci pour votre mail, nous vous répondrons dans les plus brefs délais.');
         },
         (error) => {
           console.log(error.text);
@@ -22,10 +24,10 @@ function Contacts() {
   return (
     <div className="Contacts">
       <div className="contact-big-div">
-      <div className="big-card">
+      <div className="big-card big-card-form">
         <form onSubmit={sendEmail}>
           <h2 className="title-Green">CONTACTEZ-NOUS</h2>
-          <div className="Form">
+          <div className="Form contact-form">
             <div className="column-form column-1-form">
               <label htmlFor="SurName">NOM</label>
               <input type="text" name="SurName" id="SurName" />
@@ -46,7 +48,9 @@ function Contacts() {
               ></textarea>
             </div>
           </div>
+          <div className="button-div">
           <input type="submit" value="ENVOYER" className="submit" />
+          </div>
         </form>
       </div>
       </div>

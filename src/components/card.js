@@ -5,13 +5,15 @@ const Card = ({ offer }) => {
   return (
     <div className="card">
       <div>
-        <h2 className="title">{offer.Name}</h2>
+        <h2 className="title">{offer.name}</h2>
       </div>
-      <img src={offer.Image_path} alt="img" width="100%" />
-      <p>{offer.Description}</p>
+      <img src={offer.image_path} alt="img" width="100%" />
+      <p>{offer.description}</p>
+      <div className="button-div">
       <Link to={`/Nos_Offres/${offer.id}`}>
         <button type="button">AFFICHER</button>
       </Link>
+      </div>
     </div>
   );
 };

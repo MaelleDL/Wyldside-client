@@ -1,34 +1,45 @@
-import React from "react";
-import "./App.css";
-import Header from "./components/header";
-import WhoWeAre from "./components/PRESENTATION";
-import OffersList from "./components/OFFERS/OffersList";
-import Connexion from "./components/ESPACE-PERSO/CONNEXION/Connexion";
-import Contacts from "./components/CONTACTS";
-import Carrousel from "./components/ACCUEIL/carrousel";
-import OneOffer from "./components/OFFERS/OneOffer";
-import ShoppingBag from "./components/Shoppingbag";
-import PersonalSpace from "./components/ESPACE-PERSO/ESPACE-PERSO";
+import React, {useState} from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import "./App.css";
+
+import Header from "./components/header";
+import WhoWeAre from "./pages/PRESENTATION";
+import OffersList from "./pages/OFFERSLIST";
+import Connexion from "./pages/CONNEXION";
+import Contacts from "./pages/CONTACTS";
+import Accueil from "./pages/ACCUEIL"
+import OneOffer from "./components/OneOffer";
+import ShoppingBag from "./components/Shoppingbag";
+import PersonalSpace from "./pages/ESPACE-PERSO";
+import CourseGestion from "./components/CourseGestion";
+import UserGestion from "./components/UserGestion";
 
 
-
-
-function App() {
+const App=()=> {
+  const [connected, setConnected]=useState(false);
   return (
     <Router>
       <div className="App">
-        <Header />
+        <Header connected={connected} setConnected={setConnected} />
         <div id="main">
           <Switch>
-            <Route path="/" exact component={Carrousel} />
+            <Route path="/" exact component={Accueil} />
             <Route path="/Qui_sommes_nous" component={WhoWeAre} />
             <Route path="/Nos_Offres" exact component={OffersList} />
-            <Route path="/Nos_Offres/:id" component={OneOffer} />
-            <Route path="/Identification" component={Connexion} />
+            <Route path="/Nos_Offres/:id" component={OneOffer}/>
+            <Route path="/Identification">
+              <Connexion connected={connected} setConnected={setConnected}
+              />
+            </Route>
             <Route path="/Contacts" component={Contacts} />
-            <Route path="/Shoppingbag" component={ShoppingBag} />
-            <Route path="/Espace_perso" exact component={PersonalSpace} />
+            <Route path="/Shoppingbag">
+              <ShoppingBag connected={connected}/>
+              </Route>
+            <Route path="/Espace_perso">
+              <PersonalSpace connected={connected}/>
+            </Route>
+            <Route path="/Gestion/Cours" component={CourseGestion}/>
+            <Route path="/Gestion/Users" component={UserGestion}/>
           </Switch>
         </div>
       </div>
